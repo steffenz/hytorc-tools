@@ -27,7 +27,7 @@ function doMath(tool, usermoment, tooljsfile){
 	
 	
 	
-  		$("#result").html("("+ closestPSI + " * " + usermoment + ") / " + closest + "= <b style='color:green'>" + ((closestPSI * usermoment) / closest) + "</b>");
+  		$("#result").html("("+ closestPSI + " * " + usermoment + ") / " + closest + "= <b style='color:green'>" + Math.round((closestPSI * usermoment) / closest) + "</b>");
 	});
 	
 }

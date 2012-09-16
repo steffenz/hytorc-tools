@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+  <!-- 
+  	   Hytorc Verktøykalkulator
+  	   Developed by Steffen Martinsen/SteffenMedia.no
+  	   Built upon the lovely Bootstrap by Twitter.
+  !-->
+<html>
+  <head>
+  
+
+  
+    <title>Verktøykalkulator</title>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <style type="text/css">
+    
+    </style>
+  </head>
+  <body>
+  
+
+  
+  
+     <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+    var hash = window.location.hash;
+    hash = hash.split('#');
+    hash = hash[1];
+    
+    $.getJSON("js/" + hash.toLowerCase() + ".json", function(json) {
+    
+    	$.each(json.XMLtype.XMLtable, function(key, val) {
+    		$("body").append("<table class='table table-hover'id='" + val.name.replace(/\s+/g, '') + "'><tr><th>Verktøy</th><th>NM</th><th>PSI</th></tr></table><br/><br/>");
+    		
+    		$.each(val.XMLrow, function(key1, val1) {
+    			$("#" + val.name.replace(/\s+/g, '')).append("<tr><td>"+ val.name+"</td><td>" + val1.nm +"</td><td>"+ val1.psi + "</td></tr>");
+    		});
+    		
+    	});
+    
+    });
+    </script>
+    
+  </body>
+</html>

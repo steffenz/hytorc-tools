@@ -1,18 +1,6 @@
 {
   "XMLtype": {
     "name": "calculator",
-    "parsererror": {
-      "style": "display: block; whitespace: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; backgroundcolor: #fdd; color: black",
-      "h3": [
-        "This page contains the following errors:",
-        "Below is a rendering of the page up to the first error."
-      ],
-      "div": {
-        "style": "fontfamily:monospace;fontsize:12px",
-        "#text": "error on line 278 at column 15: Opening and ending tag mismatch: XMLtable line 0 and XMLtype
-"
-      }
-    },
     "XMLtable": [
       {
         "name": "MXT HY 0.5",
