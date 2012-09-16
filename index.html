@@ -30,23 +30,29 @@
 	    border-bottom:1px solid #ccc;
 	    margin-top:-20px;
 	    padding:20px;
-	    height:500px;	
+	    height:auto;
+	    min-height: 450px;	
     }
-    #demo-htmlselect{
+    #verktoyVelger{
 	    width:800px;
 	    margin-left:75px;
     }
     
-    #demo-htmlselect a{
+    #verktoyVelger a{
 	    text-decoration: none;
     }
     
     #avTools{
 	    list-style: none;
 	    float: right;
-	    margin-right:230px;
+	    margin-right:200px;
     }
     
+    #typeVerkty{
+	    height: auto;
+	    min-height: 100px;
+	    display: block;
+    }
     </style>
   </head>
   <body>
@@ -57,56 +63,88 @@
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">Verktøykalkulator</a></li>
     <li><a href="#trekketabeller" data-toggle="tab">Trekketabeller</a></li>
+    <li><a href="#hjelp" data-toggle="tab">Hjelp</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
     <br/>
 <div class="input-append">
  <label style="float:left; margin-right:20px; padding-top:5px" class="input-label" for="inputEmail">Moment:</label>
-  <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">NM</span>
+  <input class="span2" id="momentIn" size="16" type="text"><span class="add-on">NM</span>
 </div>
 <br/>
  <label style="float:left; margin-right:20px; padding-top:5px" class="input-label" for="inputEmail">Verktøy:</label>
 
-<select id="demo-htmlselect">
-        <option value="0" selected="selected" data-imagesrc="img/stealthMini.png"
+<select id="verktoyVelger">
+
+        <option value="STEALTH" selected="selected" data-imagesrc="img/stealthMini.png"
             data-description="Eksempeltrekker">Hytorc Stealth</option>
             
            
             
-                <option value="1" data-imagesrc="img/avantiMini.png"
+                <option value="AVANTI" data-imagesrc="img/avantiMini.png"
             data-description="Eksempeltrekker">Hytorc Avanti</option>
             
-               <option value="1" data-imagesrc="img/mxtMini.png"
+               <option value="MXT" data-imagesrc="img/mxtMini.png"
             data-description="Eksempeltrekker">Hytorc MXT-SA</option>
             
-               <option value="1" data-imagesrc="img/xlctMini.png"
+               <option value="XLCT" data-imagesrc="img/xlctMini.png"
             data-description="Eksempeltrekker">Hytorc XLCT</option>
             
 
             
           
             
-             <option value="1" data-imagesrc="img/blitzMini.png"
+             <option value="BLITZ" data-imagesrc="img/blitzMini.png"
             data-description="Eksempeltrekker">Hytorc Blitz</option>
     </select>
+
     <br/>
-     <label style="float:left;" class="input-label" for="inputEmail">Type:</label>
+
+<div id="typeVerkty">
+         <label style="float:left;" class="input-label" for="inputEmail">Type:</label>
      
      <ul id="avTools">
-     <li><a href="#">Stealth 4</a></li>
-     <li><a href="#">Stealth 4</a></li>
-     <li><a href="#">Stealth 4</a></li>
      </ul>
+</div>
+   
+     <div id="result"></div>
 
     </div>
-    <div class="tab-pane" id="tab2">
-      <p>Howdy, I'm in Section 2.</p>
-    </div>
+
     
     
      <div class="tab-pane" id="trekketabeller">
-      <p>Trekketabeller.</p>
+      <p>Kommer snart!</p>
+    </div>
+
+    <div class="tab-pane" id="hjelp">
+      <p><b>Slik bruker du kalkulatoren:</b><br/>
+      <ul style="list-style:square">
+      <li>Skriv først inn momentet du ønsker å beregne utfra. Dette må oppgis 
+      i Newtonmeter (NM).</li>
+      
+      <li>Velg et verktøy fra rullegardinsmenyen</li>
+      
+      <li>Finn verktøytypen i listen som automatisk fylles ut</li>
+      
+      <li>Pumpetrykk kommer automatisk opp når du har valgt verktøytype.</li>
+      </ul>
+      
+      <br/>
+      
+      <b>Har du fremdeles problemer?</b>
+      <ul style="list-style:square">
+      <li>Sjekk at Javascript er slått på.</li>
+      <li>Oppdater nettleseren til seneste versjon</li>
+      <li>Merk at Internet Explorer 6 eller tidligere ikke støttes, men fases ut. Bruk en skikkelig nettleser, eller oppdater til seneste versjon!</li>
+      <li>Er du koblet til internett? Nettleseren lagrer deler av siden, og du kan kanskje ha mistet forbindelsen.</li>
+      </ul>
+      <br/>
+      <b>Vedvarende problemer:</b><br/>
+      Ta kontakt med oss direkte på telefon 47 93 59 00.
+      
+      </p>
     </div>
 
   </div>
@@ -115,11 +153,26 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ddslick.js"></script>
+    	<script src="js/showTools.js"></script>
+	<script src="js/doMath.js"></script>
     
     <script>
     //Make it slick!
+    
+    
+    $('#verktoyVelger').ddslick({
+    imagePosition:"left",
+    onSelected: function(selectedData){    
+		var toolName = selectedData.selectedData.value;
+		$("#avTools").html("");
+		showTools(toolName);
+        
+    }   
+});
+    
 
-    $('#demo-htmlselect').ddslick();
+
+    
     </script>
   </body>
 </html>
