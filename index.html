@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Verktøykalkulator</title>
+    <meta charset="UTF-8">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <style type="text/css">
+    
+    body {
+	    padding:20px;
+    }
+    
+    #kalkulator {
+	    width:400px;
+    }
+    
+    .tab-content{
+	    border-left: 1px solid #ccc;
+	    border-right:1px solid #ccc;
+	    border-bottom:1px solid #ccc;
+	    margin-top:-20px;
+	    padding:20px;
+	    height:500px;	
+    }
+    #demo-htmlselect{
+	    width:800px;
+	    margin-left:75px;
+    }
+    
+    #demo-htmlselect a{
+	    text-decoration: none;
+    }
+    
+    #avTools{
+	    list-style: none;
+	    float: right;
+	    margin-right:230px;
+    }
+    
+    </style>
+  </head>
+  <body>
+  
+  
+  <div id="kalkulator">
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Verktøykalkulator</a></li>
+    <li><a href="#trekketabeller" data-toggle="tab">Trekketabeller</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+    <br/>
+<div class="input-append">
+ <label style="float:left; margin-right:20px; padding-top:5px" class="input-label" for="inputEmail">Moment:</label>
+  <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">NM</span>
+</div>
+<br/>
+ <label style="float:left; margin-right:20px; padding-top:5px" class="input-label" for="inputEmail">Verktøy:</label>
+
+<select id="demo-htmlselect">
+        <option value="0" selected="selected" data-imagesrc="stealthMini.png"
+            data-description="Eksempeltrekker">Hytorc Stealth</option>
+            
+           
+            
+                <option value="1" data-imagesrc="avantiMini.png"
+            data-description="Eksempeltrekker">Hytorc Avanti</option>
+            
+               <option value="1" data-imagesrc="mxtMini.png"
+            data-description="Eksempeltrekker">Hytorc MXT-SA</option>
+            
+               <option value="1" data-imagesrc="xlctMini.png"
+            data-description="Eksempeltrekker">Hytorc XLCT</option>
+            
+
+            
+          
+            
+             <option value="1" data-imagesrc="blitzMini.png"
+            data-description="Eksempeltrekker">Hytorc Blitz</option>
+    </select>
+    <br/>
+     <label style="float:left;" class="input-label" for="inputEmail">Type:</label>
+     
+     <ul id="avTools">
+     <li><a href="#">Stealth 4</a></li>
+     <li><a href="#">Stealth 4</a></li>
+     <li><a href="#">Stealth 4</a></li>
+     </ul>
+
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p>Howdy, I'm in Section 2.</p>
+    </div>
+    
+    
+     <div class="tab-pane" id="trekketabeller">
+      <p>Trekketabeller.</p>
+    </div>
+
+  </div>
+</div>
+  </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ddslick.js"></script>
+    
+    <script>
+    //Make it slick!
+
+    $('#demo-htmlselect').ddslick();
+    </script>
+  </body>
+</html>
