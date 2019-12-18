@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import getTools from '../helpers/getTools';
 import { Tool } from '../types';
+import TorqueSelector from "./TorqueSelector";
+import ToolSelector from "./ToolSelector";
 
 export default(() => {
 
     const [ torque, setTorque ] = useState<number>(0);
     const [ allTools, setAllTools ] = useState<Tool[]>()
     const [ matchingTools, setMatchingTools] = useState<Tool[]>();
+    const [ selectedTool, setSelectedTool ] = useState<Tool>();
 
     useEffect(() => { setAllTools(getTools()) }, [])
 
@@ -50,21 +53,14 @@ export default(() => {
 
     return(
         <div>
-            <input 
-                type="text"
-                onChange={(e) => setTorque(parseInt(e.target.value))}
-                value={torque}
-                placeholder="Enter torque .."/>
-            <button onClick={btnClick}>Go</button>
+            <TorqueSelector onChange={setTorque}/>
 
+            Torque is now {torque}
 
-            { matchingTools && matchingTools.map(tool => (
-                <div>
-                    {tool.name}
-                    {tool.models.map(model =>
-                        <p>{model.name}</p>)}
-                </div>
-            ))}
+            { allTools && <ToolSelector tools={allTools}/>}
+
+            {/* { matchingTools && <ToolSelector tools={matchingTools}/> } */}
+            
         </div>
     )
 });
