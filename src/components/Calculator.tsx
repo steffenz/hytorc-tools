@@ -54,6 +54,10 @@ export default(() => {
 
     return(
         <div>
+            <p>
+                <b>WARNING: </b> 
+                This in an early prototype for testing purposes only. You shouldn't rely on this calculator "out in the wild" as it might contain bugs and errors. See hytorc.no for an up to date version.
+            </p>
             <TorqueSelector onChange={onTorqueChange}/>
             { matchingTools && <ToolSelector onChange={onToolChange} tools={matchingTools}/>}
             { selectedTool && <ModelSelector tool={selectedTool} torque={torque} onChange={onModelChange}/> }

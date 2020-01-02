@@ -16,6 +16,7 @@ const SingleTool = styled.li<{ disabled: boolean}>`
     height:100px;
     background: ${props => (props.disabled ? 'red': 'green')};
     opacity: ${props => (props.disabled ? '0.4': '1')};
+    cursor: ${props => (props.disabled ? 'not-allowed': 'pointer')};
     display:flex;
     justify-content:center;
     align-content:center;

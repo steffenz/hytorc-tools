@@ -30,6 +30,7 @@ export default({ onChange, debounceTime = 250 }:Props) => {
                     debouncedCallback(e.target.value);
                 }}
             />
+            (NM)
         </>
     )
 }

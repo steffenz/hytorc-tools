@@ -1,5 +1,6 @@
 import React from "react";
 import { Tool, Model } from "../types";
+import styled from 'styled-components';
 
 interface Props {
     tool: Tool
@@ -7,19 +8,36 @@ interface Props {
     onChange: (result: number) => void
 }
 
+const ListItem = styled.li`
+    cursor: pointer;
+` 
+
 export default({ tool, torque, onChange }: Props) => {
 
     const onModelClick = (model: Model) => {
-       console.warn('The formula is missing - only returning dummy data');
-       onChange(1337);
+
+        let closestPreset = undefined; 
+        for(var i = 0; i <= model.presets.length; i++){
+            if(model.presets[i].nm > torque){
+                closestPreset = model.presets[i];
+                break;
+            }
+        }
+
+        if(closestPreset){
+            let result = Math.round((closestPreset.psi * torque) / closestPreset.nm);
+            onChange(result);
+        }
+
     }
+
 
     return(
         <ul>
             { tool.models.map(model => (
-                <li onClick={() => onModelClick(model)} key={model.name}>
+                <ListItem onClick={() => onModelClick(model)} key={model.name}>
                     {tool.name} {model.name }
-                </li>
+                </ListItem>
             ))}
         </ul>
     )
