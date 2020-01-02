@@ -3,6 +3,7 @@ import getTools from '../helpers/getTools';
 import { Tool } from '../types';
 import TorqueSelector from "./TorqueSelector";
 import ToolSelector from "./ToolSelector";
+import ModelSelector from "./ModelSelector";
 
 export default(() => {
 
@@ -10,8 +11,19 @@ export default(() => {
     const [ allTools, setAllTools ] = useState<Tool[]>()
     const [ matchingTools, setMatchingTools] = useState<Tool[]>();
     const [ selectedTool, setSelectedTool ] = useState<Tool>();
+    const [ result, setResult ] = useState<number>();
 
     useEffect(() => { setAllTools(getTools()) }, [])
+
+    const onTorqueChange = (newTorque:number): void => {
+        setResult(undefined);
+        setSelectedTool(undefined);
+        setTorque(newTorque);
+        if(allTools){
+            let tools = getToolsWithFilteredModelList(allTools, newTorque);
+            setMatchingTools(tools);
+        }
+    }
 
 
     const getToolsWithFilteredModelList = (tools: Tool[], torque: number) => (
@@ -30,37 +42,22 @@ export default(() => {
         });
     }
 
-    const btnClick = () => {
-        if(allTools){
-            let tools = getToolsWithFilteredModelList(allTools, torque);
-            setMatchingTools(tools);
-        }
-        
+    const onToolChange = (tool: Tool) => {
+        setResult(undefined);
+        setSelectedTool(tool);
+    }
 
-        // if(tools){
-        //     tools.map(tool => {
-        //         tool.models.map(model => {
-        //             model.presets.map((previous, current) => {
-        //                 if((current.nm - torque) < (previous.nm - torque)){
-        //                     return current;
-        //                 }
-        //             })
-        //         })
-        //     })
-        // }
+    const onModelChange = (result: number) => {
+        setResult(result);
     }
     
 
     return(
         <div>
-            <TorqueSelector onChange={setTorque}/>
-
-            Torque is now {torque}
-
-            { allTools && <ToolSelector tools={allTools}/>}
-
-            {/* { matchingTools && <ToolSelector tools={matchingTools}/> } */}
-            
+            <TorqueSelector onChange={onTorqueChange}/>
+            { matchingTools && <ToolSelector onChange={onToolChange} tools={matchingTools}/>}
+            { selectedTool && <ModelSelector tool={selectedTool} torque={torque} onChange={onModelChange}/> }
+            { result && <div>Result: {result} </div>}
         </div>
     )
 });

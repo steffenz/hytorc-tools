@@ -24,7 +24,7 @@ export default({ onChange, debounceTime = 250 }:Props) => {
         <>
             <Input 
                 type="number"
-                value={value}
+                defaultValue={value}
                 onChange={(e) => {
                     setValue(e.target.value);
                     debouncedCallback(e.target.value);
