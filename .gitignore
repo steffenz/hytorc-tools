@@ -24,5 +24,4 @@ yarn-error.log*
 
 hytorc-tools/
 old/
-.xls
 /src/data/xls-to-json/node_modules

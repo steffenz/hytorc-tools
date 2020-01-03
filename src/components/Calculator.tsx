@@ -61,7 +61,7 @@ export default(() => {
             <TorqueSelector onChange={onTorqueChange}/>
             { matchingTools && <ToolSelector onChange={onToolChange} tools={matchingTools}/>}
             { selectedTool && <ModelSelector tool={selectedTool} torque={torque} onChange={onModelChange}/> }
-            { result && <div>Result: {result} </div>}
+            { result && <div><b>Result: {result} PSI</b> </div>}
         </div>
     )
 });
