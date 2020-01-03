@@ -18,7 +18,7 @@ export default({ tool, torque, onChange }: Props) => {
 
         let closestPreset = undefined; 
         for(var i = 0; i <= model.presets.length; i++){
-            if(model.presets[i].nm > torque){
+            if(model.presets[i].nm >= torque){
                 closestPreset = model.presets[i];
                 break;
             }
