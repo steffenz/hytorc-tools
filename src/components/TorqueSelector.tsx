@@ -1,6 +1,8 @@
 import React, { useState} from "react";
 import styled from "styled-components";
 import { useDebouncedCallback } from 'use-debounce';
+import { useTranslation } from 'react-i18next';
+
 
 interface Props {
     onChange: (value: number) => void,
@@ -14,6 +16,7 @@ const Input = styled.input`
 export default({ onChange, debounceTime = 250 }:Props) => {
     
     const [ value, setValue ] = useState();
+    const { t } = useTranslation();
 
     const [ debouncedCallback ] = useDebouncedCallback(
         (value: any) => onChange(value), debounceTime
@@ -30,7 +33,7 @@ export default({ onChange, debounceTime = 250 }:Props) => {
                     debouncedCallback(e.target.value);
                 }}
             />
-            (NM)
+            {t('selectTorque.unit')}
         </>
     )
 }

@@ -11,25 +11,38 @@ const ToolList = styled.ul`
     grid-template-columns: repeat(3, 1fr);
 `
 
-const SingleTool = styled.li<{ disabled: boolean}>`
-    width:100px;
-    height:100px;
-    background: ${props => (props.disabled ? 'red': 'green')};
-    opacity: ${props => (props.disabled ? '0.4': '1')};
+const SingleTool = styled.li<{ disabled: boolean, selected: boolean}>`
+    /* background: ${props => (props.disabled ? 'red': 'green')}; */
+    /* opacity: ${props => (props.disabled ? '0.4': '1')};
     cursor: ${props => (props.disabled ? 'not-allowed': 'pointer')};
     display:flex;
     justify-content:center;
-    align-content:center;
+    align-content:center; */
+    width:100px;
+    overflow:hidden;
+    text-align: center;
+
+    img {
+        width:100px;
+        height:100px;
+        border-radius:100px;
+        border: ${props => (props.selected ? '2px solid red': '2px solid #ccc')};
+        opacity: ${props => (props.selected ? '1': '0.5')};
+        display:block;
+        box-sizing:border-box;
+    }
+
 `
 
 interface Props {
     tools: Tool[],
     onChange: (tool: Tool) => void,
+    selectedTool: Tool | undefined,
 }
 
 
 
-export default({ tools, onChange }: Props) => {
+export default({ tools, onChange, selectedTool }: Props) => {
     
     const onToolSelect = (tool: Tool) => {
         if(tool.models.length > 0){
@@ -40,11 +53,16 @@ export default({ tools, onChange }: Props) => {
     return(
         <ToolList>
             { tools.map(tool => (
+                <>
                 <SingleTool 
                     onClick={() => onToolSelect(tool)}
-                    disabled={tool.models.length < 1} 
-                    key={tool.name}>{tool.name}
+                    disabled={tool.models.length < 1}
+                    selected={selectedTool && selectedTool === tool ?  true : false}
+                    key={tool.name}>
+                    <img src="./gfx/stealth.png"/>
+                    <p>{tool.name}</p>
                 </SingleTool>
+                </>
             ))}
         </ToolList>
     )

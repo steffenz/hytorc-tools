@@ -1,0 +1,17 @@
+{
+    "selectTorque": {
+        "header": "Angi moment",
+        "desc": "Fyll inn moment for å vise tilgjengelige verktøy.",
+        "unit": "NM"
+    },
+
+    "selectTool": {
+        "header": "Velg verktøy",
+        "desc": "Liste over tilgjengelige verktøy med gitt moment."
+    },
+
+    "selectSize": {
+        "header": "Velg størrelse",
+        "desc": "Velg verktøystørrelse for å vise resultat."
+    }
+}
