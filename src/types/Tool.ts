@@ -1,5 +1,6 @@
 import { Model } from './Model';
 export type Tool = {
     name: string,
-    models: Model[]
+    models: Model[],
+    image?: string,
 }

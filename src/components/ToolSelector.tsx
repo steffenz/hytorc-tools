@@ -59,7 +59,9 @@ export default({ tools, onChange, selectedTool }: Props) => {
                     disabled={tool.models.length < 1}
                     selected={selectedTool && selectedTool === tool ?  true : false}
                     key={tool.name}>
-                    <img src="./gfx/stealth.png"/>
+                        { tool.image &&
+                            <img src={`./gfx/${tool.image}`}/>
+                        }
                     <p>{tool.name}</p>
                 </SingleTool>
                 </>

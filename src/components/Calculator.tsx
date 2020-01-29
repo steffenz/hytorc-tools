@@ -110,8 +110,7 @@ export default(() => {
                     <h2>{t('selectTool.header')}</h2>
                     <p>{t('selectTool.desc')}</p>
                 </Header>
-                { matchingTools && <ToolSelector onChange={onToolChange} tools={matchingTools} selectedTool={selectedTool}/>}
-                                
+                { matchingTools && <ToolSelector onChange={onToolChange} tools={matchingTools} selectedTool={selectedTool}/>}                
                 <Header>
                     <h2>{t('selectSize.header')}</h2>
                     <p>{t('selectSize.desc')}</p>
