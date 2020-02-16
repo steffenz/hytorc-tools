@@ -21,13 +21,15 @@ const SingleTool = styled.li<{ disabled: boolean, selected: boolean}>`
     width:100px;
     overflow:hidden;
     text-align: center;
+    cursor: ${props => (props.disabled ? 'not-allowed': 'pointer')};
+    opacity: ${props => (props.disabled ? '0.4': '1')};
+    
 
     img {
         width:100px;
         height:100px;
         border-radius:100px;
-        border: ${props => (props.selected ? '2px solid red': '2px solid #ccc')};
-        opacity: ${props => (props.selected ? '1': '0.5')};
+        border: ${props => (props.selected ? '2px solid #db1f29': '2px solid #ccc')};
         display:block;
         box-sizing:border-box;
     }

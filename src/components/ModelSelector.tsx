@@ -8,8 +8,17 @@ interface Props {
     onChange: (result: number) => void
 }
 
+const List = styled.ul`
+    padding:0;
+    margin:0;
+`
+
 const ListItem = styled.li`
     cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    list-style:none;
+    
 ` 
 
 export default({ tool, torque, onChange }: Props) => {
@@ -33,12 +42,12 @@ export default({ tool, torque, onChange }: Props) => {
 
 
     return(
-        <ul>
+        <List>
             { tool.models.map(model => (
                 <ListItem onClick={() => onModelClick(model)} key={model.name}>
                     {tool.name} {model.name }
                 </ListItem>
             ))}
-        </ul>
+        </List>
     )
 }
