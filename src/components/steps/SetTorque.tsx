@@ -1,31 +1,16 @@
-import React, { useState } from "react";
-import StepTemplate from "./../StepTemplate";
+import React, {  useContext } from "react";
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
-
-interface Props {
-    onChange: (torque: number) => void
-}
+import CalculatorContext from '../context/CalculatorContext';
 
 
-export default({ onChange }: Props) => {
+export default() => {
 
-    const [ torque, setTorque ] = useState<string>('');
+    const { setTorque, torque, nextStep } = useContext(CalculatorContext);
 
-    const validateTorque = () => {
-        if(torque?.match(/^[1-9]\d*$/)){
-            onChange(parseInt(torque));
-        }
-
-        else {
-            alert('invalid number!');
-        }
-    }
-    
     return(
         <React.Fragment>
             <FormControl>
@@ -34,7 +19,7 @@ export default({ onChange }: Props) => {
                     id="standard-adornment-password"
                     value={torque}
                     type="number"
-                    onChange={(e) => { setTorque(e.target.value) }}
+                    onChange={(e) => { setTorque(parseInt(e.target.value)) }}
                     endAdornment={
                         <InputAdornment position="end">
                             <InputAdornment position="end">NM</InputAdornment>
@@ -42,8 +27,8 @@ export default({ onChange }: Props) => {
             </FormControl><br/><br/>
             <Button 
                 variant="outlined"
-                onClick={validateTorque }
-                disabled={ torque && torque.length > 0 ? false: true }
+                onClick={() => nextStep() }
+                disabled={ torque && torque > 0 ? false: true }
                 color="primary">Fortsett
             </Button>
         </React.Fragment>
