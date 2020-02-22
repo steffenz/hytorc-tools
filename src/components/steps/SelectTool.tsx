@@ -54,7 +54,7 @@ export default() => {
         <React.Fragment>
             <Grid container spacing={1} style={{ maxWidth: '900px'}}>
                 { filteredTools.map((tool, key) => (
-                    <Grid item xs={3} key={key}>
+                    <Grid item key={key} xs={12} sm={6} md={3}>
                         <Card className={classes.root}>
                             <CardActionArea onClick={ () => { setSelectedTool(tool); nextStep()}}>
                                 <CardContent>
