@@ -1,0 +1,30 @@
+{
+    "steps": {
+        "selectTorque": {
+            "stepTitle": "Select torque",
+            "torque": "Torque", 
+            "torqueUnit": "NM",
+            "numberValidationError": "Value must be a number",
+            "continue": "Continue"
+        },
+        "selectTool": {
+            "stepTitle": "Select tool",
+            "changeTorque": "Change torque"
+        },
+        "selectModel": {
+            "stepTitle": "Select model",
+            "noMatches": "No matching models found",
+            "changeTool": "Change tool"
+        },
+        "result": {
+            "stepTitle": "Recommended pump pressure",
+            "resultDescription": "Applies for {{tool}} {{model}} with a torque of {{ torque }} {{ unit }}",
+            "recommendedPumpPressure": "Recommended pump pressure",
+            "pumpPressureUnit": "PSI",
+            "disclaimerTitle": "Be careful!",
+            "disclaimerText": "Although we try our very best to keep the information in this tool as accurate as possible, we cannot guarantee that errors of either a techincal or human nature might occour. Information obtained in this tool is only meant as a guiding indication, and you should always double-check before using it out in the field.",
+            "changeModel": "Change model",
+            "restart": "Restart"
+        }
+    }
+}
