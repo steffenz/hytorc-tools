@@ -6,12 +6,12 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
 import CalculatorContext from '../context/CalculatorContext';
 import FormHelperText from '@material-ui/core/FormHelperText';
-
-
+import { useTranslation } from 'react-i18next';
 
 export default() => {
 
     const { setTorque, nextStep, torque } = useContext(CalculatorContext);
+    const { t } = useTranslation();
     
     const [ rawTorque, setRawTorque ] = useState<string>(torque ? torque.toString() : '');
     const [ showError, setShowError ] = useState<boolean>(false);
@@ -32,7 +32,7 @@ export default() => {
     return(
         <React.Fragment>
             <FormControl error={showError}>
-            <InputLabel htmlFor="standard-adornment-password">Moment</InputLabel>
+            <InputLabel htmlFor="standard-adornment-password">{t('steps.selectTorque.torque')}</InputLabel>
                 <Input
                     id="standard-adornment-password"
                     value={rawTorque}
@@ -40,17 +40,17 @@ export default() => {
                     onChange={(e) => onTorqueChange(e.target.value)}
                     endAdornment={
                         <InputAdornment position="end">
-                            <InputAdornment position="end">NM</InputAdornment>
+                            <InputAdornment position="end">{t('steps.selectTorque.torqueUnit')}</InputAdornment>
                         </InputAdornment>}/>
                         { showError && 
-                            <FormHelperText id="component-error-text">Oppgi verdien som heltall</FormHelperText>
+                            <FormHelperText id="component-error-text">{t('steps.selectTorque.numberValidationError')}</FormHelperText>
                         }
             </FormControl><br/><br/>
             <Button 
                 variant="outlined"
                 onClick={onBtnClickContinue}
                 disabled={ rawTorque.length < 1 || showError }
-                color="primary">Fortsett
+                color="primary">{t('steps.selectTorque.continue')}
             </Button>
         </React.Fragment>
     );

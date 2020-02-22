@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import { Tool, Model } from '../../types';
 import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-
 import Button from '@material-ui/core/Button';
-
+import { useTranslation } from 'react-i18next';
 import CalculatorContext from './../context/CalculatorContext';
+
 
 export default() => {    
 
     const { selectedTool, setSelectedModel, nextStep, previousStep } = useContext(CalculatorContext);
+    const { t } = useTranslation();
 
     return(
         <React.Fragment>
@@ -29,10 +29,10 @@ export default() => {
 
             { selectedTool && selectedTool.models.length < 1 ? 
             <React.Fragment>
-                <Typography>Fant ingen passende modeller</Typography>
+                <Typography>{t('steps.selectModel.noMatches')}</Typography>
             </React.Fragment> : ''}
             <br/>
-            <Button onClick={ previousStep } variant="outlined">Endre verktøy</Button>
+            <Button onClick={ previousStep } variant="outlined">{t('steps.selectModel.changeTool')}</Button>
             
         </React.Fragment>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Calculator from './components/Calculator';
 import CalculatorContext from './components/context/CalculatorContext';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';

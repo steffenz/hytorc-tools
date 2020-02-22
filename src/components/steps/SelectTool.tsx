@@ -9,6 +9,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import { useTranslation } from 'react-i18next';
 
 
 import CalculatorContext from './../context/CalculatorContext';
@@ -26,6 +27,7 @@ export default() => {
       });
 
       const classes = useStyles();
+      const { t } = useTranslation();
 
       const { tools, torque, setSelectedTool, nextStep, previousStep } = useContext(CalculatorContext);
 
@@ -70,7 +72,7 @@ export default() => {
                  ))}
             </Grid>
             <br/>
-            <Button onClick={ previousStep } variant="outlined">Endre moment</Button>
+            <Button onClick={ previousStep } variant="outlined">{t('steps.selectTool.changeTorque')}</Button>
         </React.Fragment>
     );
     

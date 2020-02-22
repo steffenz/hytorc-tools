@@ -6,24 +6,27 @@ import StepContent from '@material-ui/core/StepContent';
 import { SetTorque, SelectTool, SelectModel, Result } from './steps';
 import { CalculatorStep } from './../types';
 import Context from './context/CalculatorContext';
+import { useTranslation } from 'react-i18next';
 
 export default(() => {
 
+    const { t } = useTranslation();
+
     const steps:CalculatorStep[] = [
         { 
-            title: 'Angi moment',
+            title: t('steps.selectTorque.stepTitle'),
             component: <SetTorque/>
         },
         {
-            title: 'Velg verktøy',
+            title: t('steps.selectTool.stepTitle'),
             component: <SelectTool/>
         },
         {
-            title: 'Velg modell',
+            title: t('steps.selectModel.stepTitle'),
             component: <SelectModel/>
         },
         {
-            title: ' Anbefalt pumpetrykk',
+            title: t('steps.result.stepTitle'),
             component: <Result/>
         }
     ]

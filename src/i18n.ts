@@ -1,20 +1,25 @@
 import i18n from "i18next";
-// import LanguageDetector from "i18next-browser-languagedetector";
-// import XHR from "i18next-xhr-backend";
-
 import english from "./translations/en.json";
 import norwegian from "./translations/no.json";
 
+var searchParams = new URLSearchParams(window.location.search);
+const queryLanguage = searchParams.get('lang');
+let selectedLangauge;
+
+switch(queryLanguage){
+  case 'no':
+  case 'en':
+    selectedLangauge = queryLanguage;
+    break;
+
+  default:
+    selectedLangauge = 'no';
+}
+
 i18n
-//   .use(XHR)
-//   .use(LanguageDetector)
   .init({
     // debug: true,
-    lng: "no",
-    fallbackLng: "no", // use en if detected lng is not available
-
-    // keySeparator: false, // we do not use keys in form messages.welcome
-
+    lng: selectedLangauge,
     interpolation: {
       escapeValue: false // react already safes from xss
     },
