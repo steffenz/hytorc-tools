@@ -9,26 +9,30 @@ import CalculatorContext from './../context/CalculatorContext';
 
 export default() => {    
 
-    const { selectedTool, setSelectedModel, nextStep } = useContext(CalculatorContext);
+    const { selectedTool, setSelectedModel, nextStep, previousStep } = useContext(CalculatorContext);
 
     return(
         <React.Fragment>
             { selectedTool && 
-                <ButtonGroup
-                    orientation="vertical"
-                    color="primary"
-                    aria-label="vertical outlined primary button group">
-                { selectedTool.models.map((model, key) => (
-                    <Button key={key} onClick={() => { setSelectedModel(model); nextStep()}}>{selectedTool.name} {model.name}</Button>
-                ))}
-                </ButtonGroup>
+                <React.Fragment>
+                    <ButtonGroup
+                        orientation="vertical"
+                        color="primary"
+                        aria-label="vertical outlined primary button group">
+                    { selectedTool.models.map((model, key) => (
+                        <Button key={key} onClick={() => { setSelectedModel(model); nextStep()}}>{selectedTool.name} {model.name}</Button>
+                    ))}
+                    </ButtonGroup>
+                    <br/>
+                </React.Fragment>
             }
 
             { selectedTool && selectedTool.models.length < 1 ? 
             <React.Fragment>
-                <Typography>Fant ingen passende modeller</Typography><br/>
-                    <Button onClick={() => console.log('nope')} variant="outlined">Endre verktøy</Button>
+                <Typography>Fant ingen passende modeller</Typography>
             </React.Fragment> : ''}
+            <br/>
+            <Button onClick={ previousStep } variant="outlined">Endre verktøy</Button>
             
         </React.Fragment>
     );

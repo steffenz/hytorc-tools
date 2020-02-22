@@ -27,7 +27,7 @@ export default() => {
 
       const classes = useStyles();
 
-      const { tools, torque, setSelectedTool, nextStep } = useContext(CalculatorContext);
+      const { tools, torque, setSelectedTool, nextStep, previousStep } = useContext(CalculatorContext);
 
       const getToolsWithFilteredModelList = (tools: Tool[], torque: number) => (
         tools.map(tool => (
@@ -70,7 +70,7 @@ export default() => {
                  ))}
             </Grid>
             <br/>
-            <Button onClick={() => console.log('lol')} variant="outlined">Endre moment</Button>
+            <Button onClick={ previousStep } variant="outlined">Endre moment</Button>
         </React.Fragment>
     );
     

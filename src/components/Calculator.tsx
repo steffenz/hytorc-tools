@@ -11,31 +11,31 @@ export default(() => {
 
     const steps:CalculatorStep[] = [
         { 
-            title: 'Angi moment (N)',
+            title: 'Angi moment',
             component: <SetTorque/>
         },
         {
-            title: 'Velg verktøy (N)',
+            title: 'Velg verktøy',
             component: <SelectTool/>
         },
         {
-            title: 'Velg modell (N)',
+            title: 'Velg modell',
             component: <SelectModel/>
         },
         {
-            title: ' Resultat',
+            title: ' Anbefalt pumpetrykk',
             component: <Result/>
         }
     ]
 
-    const { step } = React.useContext(Context);
+    const { step, setStep } = React.useContext(Context);
     
     return(
         <Stepper activeStep={step} orientation="vertical">
-            { steps.map((step,key) => (
+            { steps.map((item,key) => (
                 <Step key={key}>
-                    <StepLabel style={{ cursor: 'pointer'}}>{step.title}</StepLabel>
-                    <StepContent>{step.component}</StepContent>                    
+                    <StepLabel style={ key < step ? { cursor: 'pointer'} : { cursor: 'not-allowed'}} onClick={ () => { if(key < step){ setStep(key) }} }>{item.title}</StepLabel>
+                    <StepContent>{item.component}</StepContent>                    
                 </Step>
             )) }
         </Stepper>

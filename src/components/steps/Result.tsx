@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const classes = useStyles();
 
-    const { selectedModel, selectedTool, torque  } = useContext(CalculatorContext);
+    const { selectedModel, selectedTool, torque, previousStep, setStep  } = useContext(CalculatorContext);
     
     let closestPreset = undefined;
     let result = undefined;
@@ -51,9 +51,9 @@ const classes = useStyles();
             <React.Fragment>
                 <br/>
                 <div>
-                <Button variant="contained">Endre modell</Button> 
+                <Button onClick={previousStep} variant="contained">Endre modell</Button> 
                 <Button
-                    onClick={() => console.log('bop')}
+                    onClick={() => setStep(0)}
                     variant="contained"
                     color="primary"
                     className={classes.button}
