@@ -2,9 +2,15 @@ import i18n from "i18next";
 import english from "./translations/en.json";
 import norwegian from "./translations/no.json";
 
-var searchParams = new URLSearchParams(window.location.search);
-const queryLanguage = searchParams.get('lang');
-let selectedLangauge;
+
+let queryLanguage, selectedLangauge;
+
+try {
+  let searchParams = new URLSearchParams(window.location.search);
+  queryLanguage = searchParams.get('lang');
+} catch(e){
+  // Ignore - will fallback to default in switch-block
+}
 
 switch(queryLanguage){
   case 'no':
