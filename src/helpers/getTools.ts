@@ -17,7 +17,7 @@ const getModelsForTool = (data: DataObject[]): Model[] => (
 )
 
 export default((): Tool[] => {
-    let stealth: Tool = { name: 'Stealth', image:'stealth.png', models: getModelsForTool(stealthData)}
+    let stealth: Tool = { name: 'Stealth', image:'stealth.jpg', models: getModelsForTool(stealthData)}
     let avanti: Tool = { name: 'Avanti', image:'avanti.jpg', models: getModelsForTool(avantiData)}
     let ice: Tool = { name: 'Ice', image:'ice.jpg', models: getModelsForTool(iceData)}
     let mxtsa: Tool = { name: 'MXT-SA', image:'mxt.jpg', models: getModelsForTool(mxtsaData)}
